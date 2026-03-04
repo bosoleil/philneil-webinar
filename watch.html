@@ -429,10 +429,12 @@
 
         // Join meeting
         async function joinMeeting(userName, userEmail) {
+            console.log('Starting join process for:', userName);
             showStatus('Connecting to webinar...', 'loading');
             joinBtn.disabled = true;
 
             try {
+                console.log('Initializing Zoom client...');
                 // Initialize the Zoom client
                 await client.init({
                     zoomAppRoot: zoomRoot,
@@ -462,23 +464,22 @@
                     }
                 });
 
+                console.log('Zoom client initialized');
                 showStatus('Getting authorization...', 'loading');
 
                 // Get signature from API
                 const signature = await getSignature(MEETING_NUMBER, 0);
+                console.log('Got signature:', signature ? 'Yes' : 'No');
 
                 showStatus('Joining webinar...', 'loading');
+                console.log('Joining meeting:', MEETING_NUMBER);
 
-                // Join the meeting
+                // Join the meeting (sdkKey removed in v4.0.0+, it's in the signature)
                 await client.join({
-                    sdkKey: SDK_KEY,
                     signature: signature,
                     meetingNumber: MEETING_NUMBER,
                     password: MEETING_PASSWORD,
-                    userName: userName,
-                    userEmail: userEmail,
-                    tk: '', // registrant token if webinar requires registration
-                    zak: '' // host zak if joining as host
+                    userName: userName
                 });
 
                 // Hide pre-join, show Zoom
@@ -490,7 +491,8 @@
 
             } catch (error) {
                 console.error('Join meeting error:', error);
-                showStatus(`Error: ${error.message || 'Could not join meeting'}`, 'error');
+                const errorMsg = error.reason || error.message || JSON.stringify(error);
+                showStatus(`Error: ${errorMsg}`, 'error');
                 joinBtn.disabled = false;
             }
         }
