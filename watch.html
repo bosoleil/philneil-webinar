@@ -95,10 +95,21 @@
             right: 0 !important;
             bottom: 80px !important;
             z-index: 500 !important;
+            height: calc(100vh - 140px) !important;
+            max-height: calc(100vh - 140px) !important;
+            overflow: hidden !important;
         }
 
         #zmmtg-root.active {
             display: block;
+        }
+
+        /* Constrain all Zoom content */
+        #zmmtg-root > div,
+        #zmmtg-root [class*="meeting-client"],
+        #zmmtg-root [class*="MeetingClient"] {
+            max-height: calc(100vh - 140px) !important;
+            overflow: hidden !important;
         }
 
         /* Pre-Join Screen */
@@ -348,20 +359,16 @@
             height: 100% !important;
         }
 
-        /* Make toolbar visible */
+        /* Make toolbar visible within Zoom container */
         #zmmtg-root [class*="footer"],
         #zmmtg-root [class*="Footer"],
         #zmmtg-root [class*="toolbar"],
         #zmmtg-root [class*="Toolbar"],
         #zmmtg-root [class*="meeting-footer"] {
-            z-index: 9999 !important;
+            z-index: 600 !important;
             display: flex !important;
             visibility: visible !important;
             opacity: 1 !important;
-            position: absolute !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
         }
 
         /* Ensure audio/video buttons are visible */
@@ -486,6 +493,10 @@
             try {
                 console.log('Initializing Zoom client...');
                 // Initialize the Zoom client
+                // Calculate available height (viewport - header - footer - toolbar space)
+                const availableHeight = window.innerHeight - 140 - 60; // 60px for Zoom toolbar
+                const availableWidth = window.innerWidth;
+
                 await client.init({
                     zoomAppRoot: zoomRoot,
                     language: 'en-US',
@@ -496,8 +507,8 @@
                             isResizable: true,
                             viewSizes: {
                                 default: {
-                                    width: window.innerWidth,
-                                    height: window.innerHeight - 140
+                                    width: availableWidth,
+                                    height: availableHeight
                                 }
                             }
                         },
