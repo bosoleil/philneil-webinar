@@ -338,11 +338,21 @@
             }
         }
 
-        /* Hide Zoom UI elements we don't want */
-        .meeting-info-container,
-        .footer__leave-btn-container,
-        [class*="meeting-info"] {
-            /* Customize as needed */
+        /* Ensure Zoom toolbar and controls are visible */
+        #zmmtg-root [class*="footer"],
+        #zmmtg-root [class*="toolbar"],
+        #zmmtg-root [class*="chat"] {
+            z-index: 9999 !important;
+        }
+
+        /* Make sure chat panel can expand */
+        #zmmtg-root [class*="chat-container"],
+        #zmmtg-root [class*="ChatContainer"] {
+            position: fixed !important;
+            right: 0 !important;
+            top: 60px !important;
+            bottom: 80px !important;
+            z-index: 9999 !important;
         }
     </style>
 </head>
