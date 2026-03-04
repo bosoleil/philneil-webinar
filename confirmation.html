@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're In! | Why Founders Focus on the Wrong Thing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #183057;
+            --light-blue: #3e6895;
+            --orange: #f4792b;
+            --baby-blue: #b6daf6;
+            --white: #ffffff;
+            --off-white: #f8fafc;
+            --success-green: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Avenir', 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--off-white);
+            color: var(--dark-blue);
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .header {
+            background: var(--dark-blue);
+            padding: 16px 32px;
+            text-align: center;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--dark-blue);
+            padding: 48px 32px 64px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--success-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .success-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--white);
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Webinar Details Card */
+        .details-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 600px;
+            margin: -40px auto 0;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(24, 48, 87, 0.12);
+        }
+
+        .webinar-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .webinar-meta {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light-blue);
+            font-size: 0.95rem;
+        }
+
+        .meta-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--orange);
+        }
+
+        /* Countdown Timer */
+        .countdown-wrapper {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--light-blue) 100%);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .countdown-label {
+            color: var(--baby-blue);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 8px 16px;
+            min-width: 60px;
+            display: block;
+        }
+
+        .countdown-unit {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 6px;
+        }
+
+        /* Calendar Buttons */
+        .calendar-section {
+            margin-bottom: 24px;
+        }
+
+        .calendar-section h3 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .calendar-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cal-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--dark-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .cal-btn:hover {
+            border-color: var(--light-blue);
+            background: var(--off-white);
+        }
+
+        .cal-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 48px 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Steps Section */
+        .steps-section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .step-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(24, 48, 87, 0.06);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 0 auto 16px;
+        }
+
+        .step-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* What to Expect */
+        .expect-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 12px rgba(24, 48, 87, 0.06);
+        }
+
+        .expect-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .expect-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 16px;
+        }
+
+        .expect-list {
+            list-style: none;
+        }
+
+        .expect-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .expect-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .expect-image {
+            text-align: center;
+        }
+
+        .expect-image img {
+            max-width: 200px;
+            border-radius: 10px;
+        }
+
+        /* Share Section */
+        .share-section {
+            text-align: center;
+            padding: 32px;
+            background: linear-gradient(135deg, rgba(244,121,43,0.1) 0%, rgba(182,218,246,0.2) 100%);
+            border-radius: 12px;
+        }
+
+        .share-section h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+        }
+
+        .share-section p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--dark-blue);
+            color: var(--white);
+            text-decoration: none;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .share-btn:hover {
+            transform: scale(1.1);
+            background: var(--light-blue);
+        }
+
+        .share-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        footer {
+            padding: 28px;
+            text-align: center;
+            background: var(--dark-blue);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--baby-blue);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 32px 20px 56px;
+            }
+
+            .details-card {
+                margin: -32px 16px 0;
+                padding: 24px 20px;
+            }
+
+            .webinar-meta {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+                padding: 6px 12px;
+                min-width: 50px;
+            }
+
+            .countdown {
+                gap: 10px;
+            }
+
+            .main-content {
+                padding: 32px 20px;
+            }
+
+            .expect-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .expect-image {
+                order: -1;
+                margin-bottom: 16px;
+            }
+
+            .expect-list {
+                display: inline-block;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <img src="https://philneil.com/wp-content/uploads/2025/06/CourageCompass.png" alt="Courage Compass" class="logo">
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="success-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        </div>
+        <h1>You're In!</h1>
+        <p>Your spot is confirmed. Check your email for details and mark your calendar.</p>
+    </section>
+
+    <!-- Webinar Details Card -->
+    <div class="details-card">
+        <h2 class="webinar-title">Why Founders Focus on the Wrong Thing</h2>
+
+        <div class="webinar-meta">
+            <div class="meta-item">
+                <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+                <span>March 26, 2025</span>
+            </div>
+            <div class="meta-item">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                <span>11:00 AM EST</span>
+            </div>
+            <div class="meta-item">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <span>Hosted by Phil Neil</span>
+            </div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-wrapper">
+            <p class="countdown-label">Webinar Starts In</p>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-unit">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-unit">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-unit">Mins</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-unit">Secs</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Buttons -->
+        <div class="calendar-section">
+            <h3>Add to Your Calendar</h3>
+            <div class="calendar-buttons">
+                <a href="#" class="cal-btn" id="google-cal">
+                    <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Google
+                </a>
+                <a href="#" class="cal-btn" id="apple-cal">
+                    <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Apple
+                </a>
+                <a href="#" class="cal-btn" id="outlook-cal">
+                    <svg viewBox="0 0 24 24"><path fill="#0078D4" d="M24 7.387v10.478c0 .23-.08.424-.238.576-.158.154-.352.23-.58.23h-8.547v-6.959l1.6 1.229c.102.086.223.127.363.127.14 0 .26-.04.363-.127l6.801-5.354c.045-.031.09-.053.137-.07.047-.015.099-.023.154-.023h.004c.055 0 .107.008.154.023.047.017.092.039.137.07l-.348-.2zm-.52-1.387H15.636v4.092l1.6 1.229c.102.086.223.127.363.127.14 0 .26-.04.363-.127l6.201-4.88c-.099-.283-.35-.441-.683-.441zM14.182 6h-6v12h6V6zm-14.182 1.388l-.238.577c-.158.152-.238.345-.238.576v10.478c0 .23.08.423.238.576.158.154.352.23.58.23H9v-6.959L7.4 13.096c-.102.086-.223.127-.363.127-.14 0-.26-.04-.363-.127L.52 6.127c-.045-.03-.09-.053-.137-.07-.047-.015-.099-.022-.154-.022H.225c-.055 0-.107.007-.154.022-.047.017-.092.04-.137.07l.066-.139zm.52-1.388c-.333 0-.584.158-.683.441l6.2 4.88c.103.087.224.127.364.127.14 0 .26-.04.363-.127l1.6-1.229V6H.52z"/></svg>
+                    Outlook
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Next Steps -->
+        <section class="steps-section">
+            <h2 class="section-title">Before the Webinar</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Check Your Email</h4>
+                    <p>We sent you a confirmation with the Zoom link. Add it to your inbox priority list.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Block Your Calendar</h4>
+                    <p>60 minutes. No distractions. This is your time to focus on what matters.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Come With Questions</h4>
+                    <p>Hot seat sessions are real. Bring your biggest challenge - you might get coached live.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What to Expect -->
+        <section class="expect-section">
+            <div class="expect-grid">
+                <div class="expect-content">
+                    <h3>What You'll Walk Away With</h3>
+                    <ul class="expect-list">
+                        <li>The #1 mistake founders make with their focus</li>
+                        <li>Phil's "Noise vs Signal" framework for decision-making</li>
+                        <li>Live hot seat coaching (you could be next)</li>
+                        <li>Permission to let the wrong things burn</li>
+                        <li>A clear next step if you want to go deeper</li>
+                    </ul>
+                </div>
+                <div class="expect-image">
+                    <img src="2026-02-21 TEDx DSC_1800.png" alt="Phil Neil">
+                </div>
+            </div>
+        </section>
+
+        <!-- Share Section -->
+        <section class="share-section">
+            <h3>Know a Founder Who Needs This?</h3>
+            <p>Share this webinar with someone who's been grinding on the wrong things.</p>
+            <div class="share-buttons">
+                <a href="#" class="share-btn" title="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                </a>
+                <a href="#" class="share-btn" title="Share on Twitter">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="#" class="share-btn" title="Share via Email">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 <a href="https://founderscompass.com">Founders Compass</a>. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        const webinarDate = new Date('March 26, 2025 11:00:00 EST').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = webinarDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<p style="color: var(--white); font-size: 1.2rem;">The webinar is starting!</p>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Calendar Links
+        const webinarTitle = "Why Founders Focus on the Wrong Thing - Live Webinar with Phil Neil";
+        const webinarDescription = "Join Phil Neil for a live webinar on cutting through the noise and focusing on what actually matters as a founder.";
+        const webinarLocation = "Zoom (link in email)";
+        const startDate = "20250326T160000Z"; // March 26, 2025 11:00 AM EST = 4:00 PM UTC
+        const endDate = "20250326T170000Z";   // 1 hour later
+
+        // Google Calendar
+        document.getElementById('google-cal').href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(webinarTitle)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(webinarDescription)}&location=${encodeURIComponent(webinarLocation)}`;
+
+        // Apple Calendar (ICS file)
+        document.getElementById('apple-cal').addEventListener('click', function(e) {
+            e.preventDefault();
+            const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:${startDate}
+DTEND:${endDate}
+SUMMARY:${webinarTitle}
+DESCRIPTION:${webinarDescription}
+LOCATION:${webinarLocation}
+END:VEVENT
+END:VCALENDAR`;
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'phil-neil-webinar.ics';
+            a.click();
+        });
+
+        // Outlook Calendar
+        document.getElementById('outlook-cal').href = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(webinarTitle)}&startdt=2025-03-26T16:00:00Z&enddt=2025-03-26T17:00:00Z&body=${encodeURIComponent(webinarDescription)}&location=${encodeURIComponent(webinarLocation)}`;
+
+        // Share Links
+        const shareUrl = window.location.origin + '/webinar/';
+        const shareText = "I just signed up for this webinar with Phil Neil on why founders focus on the wrong thing. Looks valuable - thought you might want to join:";
+
+        document.querySelector('.share-btn[title="Share on LinkedIn"]').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+        document.querySelector('.share-btn[title="Share on Twitter"]').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+        document.querySelector('.share-btn[title="Share via Email"]').href = `mailto:?subject=${encodeURIComponent("Webinar: Why Founders Focus on the Wrong Thing")}&body=${encodeURIComponent(shareText + "\n\n" + shareUrl)}`;
+    </script>
+</body>
+</html>

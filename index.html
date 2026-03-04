@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Founders Focus on the Wrong Thing | Live Webinar with Phil Neil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #183057;
+            --light-blue: #3e6895;
+            --orange: #f4792b;
+            --baby-blue: #b6daf6;
+            --white: #ffffff;
+            --off-white: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Avenir', 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-blue);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        /* Header / Nav */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 32px;
+        }
+
+        .logo {
+            height: 44px;
+            width: auto;
+        }
+
+        /* Hero Section - Full Photo */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(to right, rgba(24,48,87,0.92) 0%, rgba(24,48,87,0.7) 40%, rgba(24,48,87,0.3) 100%),
+                        url('Banner_.png') center center / cover no-repeat;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 32px 60px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 560px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 14px;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            color: var(--baby-blue);
+        }
+
+        .hero-date {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 8px;
+        }
+
+        .hero-host {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 16px;
+        }
+
+        .hero-host strong {
+            color: var(--white);
+        }
+
+        .hero-points {
+            list-style: none;
+            margin-bottom: 0;
+        }
+
+        .hero-points li {
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+        }
+
+        .hero-points li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        /* Registration Form */
+        .hero-form {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 28px 32px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .hero-form h3 {
+            color: var(--dark-blue);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .hero-form .form-subtitle {
+            color: var(--light-blue);
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dark-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--light-blue);
+        }
+
+        .form-group input::placeholder {
+            color: #94a3b8;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--orange);
+            color: var(--white);
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background: #e06820;
+            transform: translateY(-2px);
+        }
+
+        .form-note {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.8rem;
+            margin-top: 12px;
+        }
+
+        .spots-counter {
+            background: rgba(244, 121, 43, 0.1);
+            border: 1px solid rgba(244, 121, 43, 0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .spots-counter p {
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 64px 32px;
+            background: var(--off-white);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            margin-bottom: 8px;
+        }
+
+        .problem-section h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 32px;
+            max-width: 600px;
+            color: var(--dark-blue);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .problem-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(24, 48, 87, 0.1);
+        }
+
+        .problem-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-blue);
+        }
+
+        .problem-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* What You'll Get Section */
+        .value-section {
+            padding: 64px 32px;
+            background: var(--dark-blue);
+        }
+
+        .value-section h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .value-section .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.75);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .value-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .value-card:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .value-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--orange);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+        }
+
+        .value-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        .value-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--white);
+        }
+
+        .value-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* About Phil Section */
+        .about-section {
+            padding: 64px 32px;
+            background: var(--off-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 280px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .about-content h2 {
+            font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-blue);
+        }
+
+        .about-content h2 span {
+            color: var(--orange);
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--light-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .about-text {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+
+        .about-list {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+
+        .about-list li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .about-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .about-highlight {
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 56px 32px;
+            background: var(--light-blue);
+        }
+
+        .final-cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .final-cta-content {
+            text-align: left;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+
+        .final-cta .date-reminder {
+            font-size: 1.1rem;
+            color: var(--baby-blue);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .final-cta .cta-subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .final-cta-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* GoHighLevel Form Container */
+        .ghl-form-container {
+            min-height: 50px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 28px;
+            text-align: center;
+            background: var(--dark-blue);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--baby-blue);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                padding-top: 90px;
+            }
+
+            .hero-text {
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .hero-points {
+                display: inline-block;
+                text-align: left;
+            }
+
+            .hero-form {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 16px 20px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .hero-content {
+                padding: 80px 20px 48px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 28px;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .about-image img {
+                width: 220px;
+                margin: 0 auto;
+                display: block;
+            }
+
+            .about-stats {
+                justify-content: center;
+            }
+
+            .stat {
+                text-align: center;
+            }
+
+            .problem-section,
+            .value-section,
+            .about-section,
+            .final-cta {
+                padding: 48px 20px;
+            }
+
+            .final-cta-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .final-cta-content {
+                text-align: center;
+            }
+
+            .final-cta-image {
+                order: -1;
+            }
+
+            .final-cta-image img {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <img src="https://philneil.com/wp-content/uploads/2025/06/CourageCompass.png" alt="Courage Compass" class="logo">
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="badge">Live Webinar — Limited Seats</div>
+                <h1>Why Founders Focus on the <span>Wrong Thing</span></h1>
+                <p class="hero-date">March 26, 2025</p>
+                <p class="hero-host">Hosted by <strong>Phil Neil</strong> — Founder, Investor, Builder</p>
+                <ul class="hero-points">
+                    <li>Live hot seat sessions with real founders</li>
+                    <li>Permission to let it burn — focus on what matters</li>
+                    <li>Walk away stronger with a clear framework</li>
+                </ul>
+            </div>
+
+            <div class="hero-form" id="register">
+                <h3>Reserve Your Spot</h3>
+                <p class="form-subtitle">Free live webinar. No replays. <strong style="color: var(--orange);">Limited spots.</strong></p>
+
+                <!-- GoHighLevel Form Embed -->
+                <div class="ghl-form-container">
+                    <iframe
+                        src="https://api.leadconnectorhq.com/widget/form/VKaJXkSRRAF6lkO7SY4I"
+                        style="width:100%;height:450px;border:none;border-radius:3px"
+                        id="inline-VKaJXkSRRAF6lkO7SY4I"
+                        data-layout="{'id':'INLINE'}"
+                        data-trigger-type="alwaysShow"
+                        data-trigger-value=""
+                        data-activation-type="alwaysActivated"
+                        data-activation-value=""
+                        data-deactivation-type="neverDeactivate"
+                        data-deactivation-value=""
+                        data-form-name="Webinar"
+                        data-height="450"
+                        data-layout-iframe-id="inline-VKaJXkSRRAF6lkO7SY4I"
+                        data-form-id="VKaJXkSRRAF6lkO7SY4I"
+                        title="Webinar"
+                    ></iframe>
+                </div>
+                <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+
+                <p class="form-note">Your information is secure. We respect your privacy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <p class="section-label">The Hard Truth</p>
+            <h2>You're working harder than ever. But on what?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>The Hustle Trap</h3>
+                    <p>More hours. More tasks. More "urgent" fires. But the needle barely moves. You're sprinting on a treadmill.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>The Perfectionism Prison</h3>
+                    <p>Polishing what doesn't matter. Delaying what does. Waiting for conditions that will never be perfect.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>The Wrong Scoreboard</h3>
+                    <p>Measuring vanity metrics. Chasing approval. Building for investors instead of customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Section -->
+    <section class="value-section">
+        <div class="container">
+            <p class="section-label" style="color: var(--baby-blue);">Become Unbreakable</p>
+            <h2>What You'll Walk Away With</h2>
+            <p class="subtitle">Learn how to become an unbreakable founder who thrives through any challenge.</p>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3>Hot Seat Coaching</h3>
+                    <p>Get live coaching on your biggest blocker. Speak about what's holding you back.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                    </div>
+                    <h3>Permission to Let It Burn</h3>
+                    <p>Learn how to kill the noise and keep only what truly matters.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.92 6-4.72 7.28L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.94 2.55 2 6.81 2 12c0 3.76 2.09 7.07 5.16 8.78L6 22h5v-5l-2.28 2.28C6.92 18 5 15.21 5 12c0-4.08 3.05-7.44 7-7.93V2.05z"/></svg>
+                    </div>
+                    <h3>Come Out Stronger</h3>
+                    <p>A framework to emerge stronger from any situation you face as a founder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Phil Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="Phil_Face_Cutted.png" alt="Phil Neil">
+                </div>
+                <div class="about-content">
+                    <p class="section-label">Your Host</p>
+                    <h2>Phil Neil built it. Lost it. <span>Built it again.</span></h2>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">$70M</div>
+                            <div class="stat-label">In 8 Months</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">1</div>
+                            <div class="stat-label">Successful Exit</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Investments</div>
+                        </div>
+                    </div>
+                    <p class="about-text">From zero to $70 million in eight months. An exit. A massive scam that nearly took everything. And the grit to rebuild from the ground up — multiple times.</p>
+                    <ul class="about-list">
+                        <li>Scaled a company from nothing to eight figures in under a year</li>
+                        <li>Survived a devastating scam that would've broken most founders</li>
+                        <li>Built multiple businesses from scratch — each time sharper</li>
+                        <li>Invested in 10+ companies and seen every mistake in the book</li>
+                    </ul>
+                    <p class="about-highlight">This isn't coaching. It's lived experience — taught raw.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-cta-grid">
+                <div class="final-cta-content">
+                    <h2>Ready to Become Unbreakable?</h2>
+                    <p class="date-reminder">March 26, 2025 — Live Webinar</p>
+                    <p class="cta-subtitle">Join Phil Neil and learn the frameworks that helped him build $70M in 8 months, survive losing it all, and come back stronger.</p>
+                    <a href="#register" class="submit-btn" style="display: inline-block; text-decoration: none; text-align: center; max-width: 300px;">
+                        Reserve Your Spot Now
+                    </a>
+                    <p class="form-note" style="margin-top: 16px;">No recordings. No replays. Founders who show up, get results.</p>
+                </div>
+                <div class="final-cta-image">
+                    <img src="Phil_Hands_Speak.png" alt="Phil Neil">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 <a href="https://founderscompass.com">Founders Compass</a>. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Form submission handler - works with GoHighLevel webhook
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                // Get the webhook URL from the form action
+                const webhookUrl = this.action;
+
+                // Check if webhook URL is configured
+                if (webhookUrl === 'YOUR_GHL_WEBHOOK_URL') {
+                    alert('Please configure your GoHighLevel webhook URL in the form action attribute.');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        // Redirect to thank you page or show success message
+                        alert('You\'re registered! Check your email for confirmation.');
+                        this.reset();
+                    } else {
+                        alert('Something went wrong. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
