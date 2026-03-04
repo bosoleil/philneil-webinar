@@ -398,12 +398,15 @@
         const MEETING_PASSWORD = 'YED0RARGbVtbyhWbMLKcpiR0i64K2H.1';
         const SDK_KEY = '08_aLcFuTqaz1BPhRoPfPQ';
 
-        // Pre-generated signature (valid until March 27, 2026 - day after webinar)
-        const SIGNATURE = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZGtLZXkiOiIwOF9hTGNGdVRxYXoxQlBoUm9QZlBRIiwiYXBwS2V5IjoiMDhfYUxjRnVUcWF6MUJQaFJvUGZQUSIsIm1uIjoiODMwMjg2NTkwNzIiLCJyb2xlIjowLCJpYXQiOjE3NzI2Mzg5MzYsImV4cCI6MTc3NDY1NTk5OSwidG9rZW5FeHAiOjE3NzQ2NTU5OTl9.fts3FPJCGpeMvDinZ9wILnlVWlSBttUNtqI7Le6xvgQ';
-
-        // Get signature - returns pre-generated signature
+        // Get signature from API (generates fresh signature each time)
         async function getSignature(meetingNumber, role) {
-            return SIGNATURE;
+            const response = await fetch('https://philneil-zoom-api.azurewebsites.net/api/generate-signature', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ meetingNumber, role })
+            });
+            const data = await response.json();
+            return data.signature;
         }
 
         // Initialize Zoom client
