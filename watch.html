@@ -46,6 +46,11 @@
             justify-content: space-between;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
         }
 
         .logo {
@@ -103,7 +108,10 @@
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
+            padding-top: 100px;
+            padding-bottom: 120px;
             background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+            min-height: 100vh;
         }
 
         .pre-join-card {
@@ -246,6 +254,11 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             flex-wrap: wrap;
             z-index: 1000;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
         }
 
         .cta-content {
@@ -451,16 +464,12 @@
                         },
                         chat: {
                             popper: {
-                                disableDraggable: false
+                                disableDraggable: false,
+                                anchorElement: zoomRoot,
+                                placement: 'right'
                             }
                         },
-                        meetingInfo: ['topic', 'host', 'participant', 'dc'],
-                        toolbar: {
-                            buttons: [
-                                { text: 'Chat', className: 'chat-button', onClick: () => {} },
-                                { text: 'Q&A', className: 'qa-button', onClick: () => {} }
-                            ]
-                        }
+                        meetingInfo: ['topic', 'host', 'participant', 'dc']
                     }
                 });
 
